@@ -23,21 +23,19 @@
 
 ## Executive Summary
 
-This architecture establishes a secure, scalable, and compliant foundational platform tailored for aerospace & defense needs. It leverages cloud-native microservices for flexibility, with robust security and compliance measures integrated from the ground up.
+This architecture establishes a scalable, secure, and maintainable digital foundation for Hamza Boss, focusing on user management, data storage, and operational dashboards. It leverages cloud-native technologies to ensure flexibility and future growth.
 
 ### Key Decisions
-- Adopt a microservices architecture for scalability and modularity
-- Utilize cloud infrastructure (AWS) for deployment and scalability
-- Implement security standards aligned with industry regulations (ISO/IEC 27001, industry best practices)
+- Adopt a microservices architecture to enable scalability and modularity
+- Use cloud infrastructure (AWS) for hosting, scalability, and security
+- Implement RESTful APIs for internal and external integrations
 
 ### Technology Highlights
-- React for frontend for responsive UI
+- React.js for frontend for rich, responsive UI
 - FastAPI (Python) for backend APIs due to rapid development and performance
-- PostgreSQL for relational data storage
-- Redis for caching
-- AWS cloud services (ECS/EKS, RDS, S3) for infrastructure
-- Kubernetes for orchestration
-- OAuth2/JWT for security and access control
+- PostgreSQL for relational data storage with Redis for caching
+- AWS cloud services (ECS/EKS, RDS, S3) for deployment and storage
+- OAuth2 with JWT for secure authentication
 
 ## System Architecture
 
@@ -45,118 +43,90 @@ This architecture establishes a secure, scalable, and compliant foundational pla
 
 ### Architecture Overview
 
-The system comprises a frontend web application communicating via RESTful APIs over HTTPS with multiple backend microservices hosted on AWS ECS/EKS, connected to PostgreSQL for data persistence, Redis for caching, and S3 for storage. External integrations occur through secure APIs, with monitoring and logging integrated across components.
+The system consists of a frontend web application communicating via REST APIs with a backend API gateway, which routes requests to dedicated microservices for user management, data management, and dashboard services. Data is stored in PostgreSQL, with Redis caching. All services are hosted on AWS ECS/EKS, with static assets on S3, and secure communication via HTTPS.
 
 ### System Components
 
 #### Frontend Web Application
 
-**Purpose:** Provide user interface for administrators and end users
+**Purpose:** Provide user interface for login, data entry, and dashboards
 
 **Responsibilities:**
 - Render UI
 - Handle user interactions
 - Communicate with backend APIs
 
-**Technologies:** React, TypeScript
+**Technologies:** React.js, Next.js for SSR and SEO
 
 #### API Gateway
 
-**Purpose:** Route requests to appropriate microservices, handle load balancing and security
+**Purpose:** Route requests to appropriate microservices
 
 **Responsibilities:**
+- Authentication and authorization
 - Request routing
-- Authentication enforcement
+- Rate limiting
 
-**Technologies:** AWS API Gateway
+**Technologies:** FastAPI, NGINX or AWS API Gateway
 
-#### Auth Service
+#### User Management Service
 
-**Purpose:** Manage user authentication and authorization
-
-**Responsibilities:**
-- User login
-- Token issuance
-- Role management
-
-**Technologies:** OAuth2, JWT, FastAPI
-
-#### Core Business Microservices
-
-**Purpose:** Implement core functionalities like user management, data handling, compliance features
+**Purpose:** Handle registration, login, roles, permissions
 
 **Responsibilities:**
-- Business logic
-- Data processing
+- User authentication
+- Role-based access control
 
-**Technologies:** FastAPI (Python), Docker
+**Technologies:** FastAPI, JWT for token management
 
-#### Database Layer
+#### Data Management Service
 
-**Purpose:** Store structured data securely
-
-**Responsibilities:**
-- Data persistence
-- ACID compliance
-
-**Technologies:** PostgreSQL
-
-#### Caching Layer
-
-**Purpose:** Improve performance for read-heavy operations
+**Purpose:** Manage core data schemas and CRUD operations
 
 **Responsibilities:**
-- Cache frequently accessed data
+- Data validation
+- Data storage and retrieval
 
-**Technologies:** Redis
+**Technologies:** FastAPI, PostgreSQL
 
-#### Storage
+#### Dashboard Service
 
-**Purpose:** Handle large files, logs, and backups
-
-**Responsibilities:**
-- Object storage
-
-**Technologies:** AWS S3
-
-#### Monitoring & Logging
-
-**Purpose:** Ensure system reliability and security auditing
+**Purpose:** Aggregate data and serve real-time dashboards
 
 **Responsibilities:**
-- Collect logs
-- Monitor system health
+- Data aggregation
+- Visualization support
 
-**Technologies:** CloudWatch, ELK Stack
+**Technologies:** FastAPI, WebSocket for real-time updates
 
 ### Data Flow
 
-#### User Request
+#### User Authentication
 
-User interacts via frontend, requests are routed through API Gateway to microservices, which process data and respond.
+User submits credentials via frontend → API Gateway validates via User Service → JWT token issued → Frontend stores token for session
 
-1. User action in UI
-2. Request sent to API Gateway
-3. Request routed to relevant microservice
-4. Microservice processes and queries database/cache
-5. Response sent back through API Gateway
-6. UI updates accordingly
+1. User enters credentials
+2. Frontend sends login request to API Gateway
+3. API Gateway forwards to User Service
+4. User Service authenticates and returns JWT
+5. Frontend stores JWT and accesses protected resources
 
-#### Data Storage
+#### Data Entry and Retrieval
 
-Data created/updated via APIs, stored in PostgreSQL, with backups in S3, and cache updated in Redis.
+Users submit data via frontend → Data Service validates and stores data → Dashboard fetches aggregated data for display
 
-1. API call to create/update data
-2. Microservice writes to PostgreSQL
-3. Cache invalidation/update in Redis
+1. User submits data
+2. API Gateway routes to Data Service
+3. Data Service validates and stores in PostgreSQL
+4. Dashboard Service queries data for display
 
 ## Technology Stack
 
 ### Frontend
 
-**Framework:** React
+**Framework:** React.js with Next.js
 
-*Justification:* React provides a flexible, component-based architecture suitable for responsive, role-based dashboards, with strong community support.
+*Justification:* React.js provides a flexible, component-based architecture suitable for dynamic dashboards; Next.js enables server-side rendering for performance and SEO.
 
 **Libraries:**
 
@@ -170,32 +140,32 @@ Data created/updated via APIs, stored in PostgreSQL, with backups in S3, and cac
 **Framework:** FastAPI
 **Language:** Python
 
-*Justification:* FastAPI offers high performance, asynchronous capabilities, and rapid development, ideal for microservices in a security-sensitive environment.
+*Justification:* FastAPI offers high performance, easy async support, and rapid development, ideal for microservices architecture.
 
 **Libraries:**
 
 | Library | Purpose |
 |---------|---------|
-| SQLAlchemy | ORM for database access |
+| SQLAlchemy | ORM for PostgreSQL |
 | PyJWT | JWT token handling |
 
 ### Database
 
 **Primary Database:** PostgreSQL
-*Justification:* Relational database with strong compliance, ACID guarantees, and industry support for complex queries.
+*Justification:* Relational data with complex relationships, proven reliability, and scalability.
 
 **Caching:** Redis
-*Justification:* In-memory cache for performance optimization, widely adopted for high throughput scenarios.
+*Justification:* Supports fast data caching, session management, and real-time updates.
 
 **Search:** Elasticsearch
-*Justification:* Optional, for advanced search capabilities if needed in future phases.
+*Justification:* Optional, for advanced search capabilities if needed in future expansion.
 
 ### Infrastructure
 
 **Cloud Provider:** AWS
 **Hosting:** ECS/EKS for container orchestration
-**CDN:** CloudFront
-**Storage:** S3
+**CDN:** CloudFront for static assets
+**Storage:** S3 for static files and backups
 
 ### DevOps
 
@@ -203,55 +173,55 @@ Data created/updated via APIs, stored in PostgreSQL, with backups in S3, and cac
 **Containerization:** Docker
 **Orchestration:** Kubernetes (EKS)
 
-**Monitoring:** CloudWatch, Prometheus
+**Monitoring:** CloudWatch, Datadog
 
-**Logging:** ELK Stack
+**Logging:** CloudWatch Logs
 
 ### Third-Party Integrations
 
 | Service | Purpose | API Type |
 |---------|---------|----------|
-| Auth0 | Identity management and MFA | OAuth2 |
+| Auth0 | External OAuth2 provider for authentication (optional) | OAuth2 |
 
 ## Security Architecture
 
 ### Authentication
 
 **Method:** OAuth2 with JWT tokens
-**Provider:** Auth0
+**Provider:** Custom implementation with JWT or optional external provider (Auth0)
 
 ### Authorization
 
 **Model:** RBAC
-**Implementation:** Role-based access control enforced via token claims and API gateway policies
+**Implementation:** Role-based access enforced at API level
 
 ### Data Protection
-- Encryption at rest (PostgreSQL, S3)
-- Encryption in transit (TLS 1.2+)
-- Data masking for sensitive info
+- Encryption at rest: AES-256 (PostgreSQL, S3)
+- Encryption in transit: HTTPS/TLS
+- Data masking: As needed for sensitive data
 
-**Compliance:** ISO/IEC 27001, Industry-specific standards
+**Compliance:** GDPR (if applicable)
 
 ### Security Measures
+- Secure password policies
 - Regular security audits
-- Secure coding practices
-- Network segmentation
+- WAF and network security groups
 
 ## Scalability & Reliability
 
-**Scaling Strategy:** Auto-scaling based on load (EKS, ECS)
-**Load Balancing:** AWS Application Load Balancer
+**Scaling Strategy:** Auto-scaling based on load for ECS/EKS services
+**Load Balancing:** AWS Application Load Balancer (ALB)
 
 ### High Availability
 
-**Approach:** Multi-AZ deployments for databases and microservices
-**Failover:** Automatic failover with RDS Multi-AZ, health checks for services
+**Approach:** Multi-AZ deployment for databases and services
+**Failover:** Automatic failover with RDS Multi-AZ
 
 ### Disaster Recovery
 
-**RPO:** Minimal data loss with regular backups
-**RTO:** Restoration within hours
-**Backup Strategy:** Automated daily backups, cross-region replication
+**RPO:** 24 hours
+**RTO:** 2 hours
+**Backup Strategy:** Automated backups with periodic snapshots
 
 ## Integration Architecture
 
@@ -265,26 +235,26 @@ Data created/updated via APIs, stored in PostgreSQL, with backups in S3, and cac
 
 | System | Type | Data Exchanged |
 |--------|------|----------------|
-| Client's ERP/Defense Platforms | REST API | Operational data, user info, logs |
+| Third-party data sources | API | Data feeds, authentication tokens |
 
 ### Event Architecture
 
-**Pattern:** Request-response with event-driven extensions in future
-**Message Broker:** Kafka (planned for future scalability)
+**Pattern:** Request-response
+**Message Broker:** None in initial phase; Kafka/RabbitMQ for future event-driven needs
 
 ## Development Approach
 
-**Methodology:** Agile
+**Methodology:** Agile Scrum
 **Sprint Duration:** 2 weeks
-**Branching Strategy:** GitFlow
+**Branching Strategy:** Trunk-based development
 
 **Environments:** development, staging, production
 
 ### Testing Strategy
 
 **Unit Testing:** Pytest
-**Integration Testing:** Postman/Newman
-**E2E Testing:** Playwright
+**Integration Testing:** Automated tests
+**E2E Testing:** Cypress
 **Coverage Target:** 80%
 
 ## Timeline Estimate
@@ -298,50 +268,52 @@ Data created/updated via APIs, stored in PostgreSQL, with backups in S3, and cac
 **Duration:** 3 weeks
 
 **Features:**
-- Initial architecture setup
-- Requirement refinement
+- Requirements clarification
+- Architecture design
+- Environment setup
 
 **Deliverables:**
-- Architecture diagrams
+- Architecture document
 - Initial environment setup
 
-#### Core Development
+#### Development & Core Features
 
 **Duration:** 6 weeks
 
 **Features:**
-- Frontend prototype
-- Backend microservices
-- Database schema
+- User management
+- Data schemas
+- Basic dashboard
 
 **Deliverables:**
-- Basic UI
-- API endpoints
-- Database setup
+- Core backend APIs
+- Frontend MVP
 
-#### Testing & Refinement
+#### Testing & Deployment
 
 **Duration:** 3 weeks
 
 **Features:**
-- Security hardening
-- Performance tuning
 - User acceptance testing
+- Deployment automation
+- Documentation
 
 **Deliverables:**
-- Test reports
-- Deployment scripts
+- Deployed system
+- User manuals
 
 ### Milestones
 
 | Milestone | Week | Criteria |
 |-----------|------|----------|
-| MVP Release | 12 | Core features implemented, Security and performance benchmarks met |
+| Design Approval | 2 | Design documents approved |
+| MVP Completion | 10 | Core features implemented and tested |
+| System Deployment | 14 | System live and accepted by client |
 
 ### Timeline Risks
 
 - **Delays in requirement clarification** (+2 weeks)
-  - Mitigation: Early stakeholder engagement and iterative reviews
+  - Mitigation: Early engagement and regular check-ins
 
 ## Pricing Estimate
 
@@ -350,24 +322,24 @@ Data created/updated via APIs, stored in PostgreSQL, with backups in S3, and cac
 
 ### Development Costs
 
-**Total:** $180,000.00
+**Total:** $160,000.00
 
 | Phase | Cost | Details |
 |-------|------|---------|
-| Foundation & Planning | $30,000.00 | Architecture, environment setup |
-| Core Development | $90,000.00 | Frontend, backend, database |
-| Testing & Deployment | $60,000.00 | Testing, security hardening, deployment |
+| Foundation & Planning | $20,000.00 | Architecture, environment setup |
+| Development & Core Features | $100,000.00 | Backend, frontend, core APIs |
+| Testing & Deployment | $40,000.00 | Testing, deployment, documentation |
 
 ### Infrastructure Costs
 
-**Monthly Estimate:** $700.00
-**Yearly Estimate:** $8,400.00
+**Monthly Estimate:** $600.00
+**Yearly Estimate:** $7,200.00
 
 | Service | Monthly Cost |
 |---------|--------------|
-| AWS EC2/EKS | $400.00 |
+| AWS EC2/EKS | $300.00 |
 | RDS PostgreSQL | $150.00 |
-| S3 Storage | $50.00 |
+| S3 storage | $50.00 |
 | CloudFront CDN | $100.00 |
 
 ### Third-Party Costs (Monthly)
@@ -383,13 +355,13 @@ Data created/updated via APIs, stored in PostgreSQL, with backups in S3, and cac
 | Milestone | Percentage |
 |-----------|------------|
 | Design Approval | 20% |
-| Core Development Complete | 50% |
-| Testing & Deployment | 30% |
+| MVP Delivery | 50% |
+| Final Deployment | 30% |
 
 ### Exclusions
 
-- Hardware procurement
-- Long-term maintenance beyond initial deployment
+- Mobile app development
+- Third-party system integrations beyond initial scope
 
 ---
 
