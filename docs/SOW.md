@@ -10,16 +10,16 @@
 ## 1. Introduction
 
 ### 1.1 Purpose
-This Statement of Work (SOW) defines the scope, deliverables, milestones, roles, responsibilities, and processes for the development of the Hamza Boss - Foundation Project.
+This Statement of Work (SOW) defines the scope, deliverables, milestones, roles, and responsibilities for the development of the Hamza Boss - Foundation Project.
 
 ### 1.2 Background
-The project aims to establish a foundational platform for Hamza Boss, an aerospace & defense client, to support future development, compliance, and operational needs.
+Hamza Boss requires a foundational digital platform to support its operations in the agriculture sector, enabling data management, user access, and operational dashboards.
 
 ### 1.3 Objectives
 
-- Deliver a secure, scalable core platform
-- Ensure compliance with aerospace & defense standards
-- Support future expansion and integration
+- Establish core system functionalities including user management and data storage
+- Deliver a secure, scalable, and operational platform
+- Lay groundwork for future expansion and integrations
 
 ## 2. Scope of Work
 
@@ -27,63 +27,64 @@ The project aims to establish a foundational platform for Hamza Boss, an aerospa
 
 | Item | Description |
 |------|-------------|
-| Design system architecture | Define and implement system architecture supporting core functionalities. |
-| Develop core modules | Implement user management, data handling, and security features. |
-| Conduct testing and validation | Ensure system meets functional and non-functional requirements. |
+| User registration and login | Implement secure user authentication |
+| Basic data schemas | Design and implement core database structures |
+| Operational dashboard | Create a dashboard for project tracking and metrics |
+| Security measures | Implement data encryption and access controls |
 
 ### 2.2 Out of Scope
 
 | Item | Reason |
 |------|--------|
-| Hardware procurement | Client will provide hardware infrastructure. |
-| Long-term maintenance | Post-deployment support is outside initial scope. |
+| Mobile application development | Not included in initial scope |
+| Third-party system integrations | Scope to be defined in future phases |
 
 ### 2.3 Assumptions
 
-- Client will provide timely feedback
-- All necessary infrastructure is available
+- Client will provide detailed requirements and feedback
+- Technology stack will be finalized during initial planning
 
 ## 3. Deliverables
 
 | ID | Deliverable | Description | Phase |
 |----|-------------|-------------|-------|
-| D-001 | System Design Document | Comprehensive design specifications including architecture, modules, and interfaces. | mvp |
-| D-002 | Developed Core Platform | Deployed core system with user management, data handling, and security features. | mvp |
-| D-003 | Test Reports and Documentation | Testing results, user manuals, and deployment guides. | mvp |
+| D-001 | System Design Documentation | Complete technical design and architecture documents | mvp |
+| D-002 | Developed System | Fully functional system with user management, data storage, and dashboard | mvp |
+| D-003 | Deployment and Documentation | Deployed system on cloud environment with user manuals and technical documentation | mvp |
 
 ### 3.1 Acceptance Criteria
 
-**D-001: System Design Document**
-- Design approved by client
-- Alignment with requirements
+**D-001: System Design Documentation**
+- Approval by client
+- Completeness and clarity
 
-**D-002: Developed Core Platform**
-- System passes functional testing
-- Security standards met
+**D-002: Developed System**
+- Functionality meets specifications
+- Passed user acceptance testing
 
-**D-003: Test Reports and Documentation**
-- All tests passed
-- Documentation complete
+**D-003: Deployment and Documentation**
+- Successful deployment
+- Documentation approved by client
 
 ## 4. Milestones
 
 ### M-001: Design Approval
 
-**Description:** Client reviews and approves system design documents.
+**Description:** Client approves system design documents
 
 **Associated Deliverables:**
 - D-001
 
 ### M-002: Development Completion
 
-**Description:** Core platform developed and ready for testing.
+**Description:** Completion of core system functionalities
 
 **Associated Deliverables:**
 - D-002
 
-### M-003: Testing & Deployment
+### M-003: Deployment & Acceptance
 
-**Description:** System tested, validated, and deployed to production environment.
+**Description:** System deployed and accepted by client
 
 **Associated Deliverables:**
 - D-003
@@ -93,15 +94,16 @@ The project aims to establish a foundational platform for Hamza Boss, an aerospa
 ### 5.1 Provider Responsibilities
 
 - Design system architecture
-- Develop core modules
-- Conduct testing and validation
+- Develop core functionalities
+- Conduct testing and deployment
 - Provide documentation
 
 ### 5.2 Client Responsibilities
 
-- Provide detailed requirements and feedback
+- Provide detailed requirements
 - Review and approve deliverables
-- Coordinate access and infrastructure
+- Provide timely feedback
+- Assign project point of contact
 
 ## 6. Communication Plan
 
@@ -109,22 +111,23 @@ The project aims to establish a foundational platform for Hamza Boss, an aerospa
 
 | Type | Frequency | Participants |
 |------|-----------|--------------|
-| Status Update | Bi-weekly | Hamza Boss, Development Team |
-| Design Review | At milestone completion | Client, Design Team |
+| Status update meetings | Bi-weekly | Project team, Hamza Rider |
+| Design review | At milestone completion | Design team, Client |
+| Deployment planning | As needed | DevOps, Client |
 
 ### 6.2 Reporting
-Progress reports submitted bi-weekly via email
+Weekly progress reports via email
 
 ### 6.3 Escalation Process
-Issues escalated to project manager and client sponsor as needed
+Issues escalated to project manager and client point of contact within 24 hours
 
 ## 7. Change Management
 
 ### 7.1 Change Request Process
-All change requests must be documented and approved by both parties before implementation.
+All change requests must be documented and approved by both parties before implementation
 
 ### 7.2 Impact Assessment
-Each change will be evaluated for scope, schedule, and cost impacts prior to approval.
+Assess impact on scope, timeline, and budget prior to approval
 
 ---
 
