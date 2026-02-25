@@ -10,16 +10,16 @@
 ## 1. Introduction
 
 ### 1.1 Purpose
-This Statement of Work (SOW) defines the scope, deliverables, milestones, roles, and responsibilities for the development of the Hamza Boss - Foundation Project.
+This Statement of Work (SOW) outlines the scope, deliverables, milestones, roles, and responsibilities for the Hamza Boss - Foundation Project.
 
 ### 1.2 Background
-Hamza Boss requires a foundational digital platform to support its operations in the agriculture sector, enabling data management, user access, and operational dashboards.
+Hamza Boss requires a foundational digital system to manage client data and integrate with their existing website to improve operational efficiency.
 
 ### 1.3 Objectives
 
-- Establish core system functionalities including user management and data storage
-- Deliver a secure, scalable, and operational platform
-- Lay groundwork for future expansion and integrations
+- Develop core data management capabilities
+- Integrate with existing website
+- Ensure system security and scalability
 
 ## 2. Scope of Work
 
@@ -27,64 +27,54 @@ Hamza Boss requires a foundational digital platform to support its operations in
 
 | Item | Description |
 |------|-------------|
-| User registration and login | Implement secure user authentication |
-| Basic data schemas | Design and implement core database structures |
-| Operational dashboard | Create a dashboard for project tracking and metrics |
-| Security measures | Implement data encryption and access controls |
+| Development of client data management module | CRUD operations for client details |
+| Website integration with https://hamza.rider.app | Embed and connect data display and interactions |
+| User account management with role-based access control | Create and manage user roles and permissions |
 
 ### 2.2 Out of Scope
 
 | Item | Reason |
 |------|--------|
-| Mobile application development | Not included in initial scope |
-| Third-party system integrations | Scope to be defined in future phases |
+| Advanced analytics and reporting | Not included in initial scope |
+| Third-party system integrations beyond website | Scope limited to core functionalities |
 
 ### 2.3 Assumptions
 
-- Client will provide detailed requirements and feedback
-- Technology stack will be finalized during initial planning
+- Client will provide timely access and feedback
+- Existing infrastructure supports required integrations
 
 ## 3. Deliverables
 
 | ID | Deliverable | Description | Phase |
 |----|-------------|-------------|-------|
-| D-001 | System Design Documentation | Complete technical design and architecture documents | mvp |
-| D-002 | Developed System | Fully functional system with user management, data storage, and dashboard | mvp |
-| D-003 | Deployment and Documentation | Deployed system on cloud environment with user manuals and technical documentation | mvp |
+| D-001 | Client Data Management Module | A module supporting CRUD operations for client details with validation. | mvp |
+| D-002 | Website Integration | Embedded integration with https://hamza.rider.app for data display and interaction. | mvp |
+| D-003 | User Management System | Role-based user account creation, update, and security enforcement. | phase2 |
 
 ### 3.1 Acceptance Criteria
 
-**D-001: System Design Documentation**
-- Approval by client
-- Completeness and clarity
+**D-001: Client Data Management Module**
+- Functionality tested and validated
 
-**D-002: Developed System**
-- Functionality meets specifications
-- Passed user acceptance testing
+**D-002: Website Integration**
+- Seamless data display and interaction verified
 
-**D-003: Deployment and Documentation**
-- Successful deployment
-- Documentation approved by client
+**D-003: User Management System**
+- Roles assigned and enforced correctly
 
 ## 4. Milestones
 
-### M-001: Design Approval
+### M-001: Initial System Deployment
 
-**Description:** Client approves system design documents
+**Description:** Deployment of core data management and website integration modules.
 
 **Associated Deliverables:**
 - D-001
-
-### M-002: Development Completion
-
-**Description:** Completion of core system functionalities
-
-**Associated Deliverables:**
 - D-002
 
-### M-003: Deployment & Acceptance
+### M-002: User Management Implementation
 
-**Description:** System deployed and accepted by client
+**Description:** Completion of role-based user management system.
 
 **Associated Deliverables:**
 - D-003
@@ -93,17 +83,15 @@ Hamza Boss requires a foundational digital platform to support its operations in
 
 ### 5.1 Provider Responsibilities
 
-- Design system architecture
-- Develop core functionalities
-- Conduct testing and deployment
-- Provide documentation
+- Develop core modules as specified
+- Perform testing and validation
+- Provide documentation and training
 
 ### 5.2 Client Responsibilities
 
-- Provide detailed requirements
-- Review and approve deliverables
 - Provide timely feedback
-- Assign project point of contact
+- Access to existing infrastructure
+- Approve milestones
 
 ## 6. Communication Plan
 
@@ -111,23 +99,21 @@ Hamza Boss requires a foundational digital platform to support its operations in
 
 | Type | Frequency | Participants |
 |------|-----------|--------------|
-| Status update meetings | Bi-weekly | Project team, Hamza Rider |
-| Design review | At milestone completion | Design team, Client |
-| Deployment planning | As needed | DevOps, Client |
+| Status Update | Bi-weekly | Hamza Rider, Project Team |
 
 ### 6.2 Reporting
 Weekly progress reports via email
 
 ### 6.3 Escalation Process
-Issues escalated to project manager and client point of contact within 24 hours
+Issues escalated to project manager within 24 hours
 
 ## 7. Change Management
 
 ### 7.1 Change Request Process
-All change requests must be documented and approved by both parties before implementation
+All changes must be documented and approved via formal change request process.
 
 ### 7.2 Impact Assessment
-Assess impact on scope, timeline, and budget prior to approval
+Any change will be assessed for scope, schedule, and cost impact before approval.
 
 ---
 
