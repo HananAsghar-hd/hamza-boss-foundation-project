@@ -13,9 +13,9 @@ This Software Development Agreement ("Agreement") is entered into by and between
 
 **SERVICE PROVIDER:**
 
-**To be determined (likely the development team or vendor)**
-Address: To be specified upon contract execution
-Represented by: Authorized representative to be designated
+**To be defined (likely the development or consulting team)**
+Address: To be specified in final agreement
+Represented by: To be specified in final agreement
 
 (hereinafter referred to as "Provider")
 
@@ -24,8 +24,8 @@ Represented by: Authorized representative to be designated
 **CLIENT:**
 
 **Hamza Boss**
-Address: Not specified
-Represented by: Hamza Farooq
+Address: To be specified in final agreement
+Represented by: Hamza Rider
 
 (hereinafter referred to as "Client")
 
@@ -35,12 +35,12 @@ Represented by: Hamza Farooq
 
 **WHEREAS:**
 
-This Software Development Agreement (the 'Agreement') is entered into between Hamza Boss ('Client') and the Service Provider ('Provider') for the development of the Hamza Boss - Foundation Project, a foundational platform supporting aerospace & defense industry standards and future expansion.
+This Agreement is made between the Provider and the Client for the development of the Hamza Boss - Foundation Project, a foundational digital platform to support the Client's operations in the agriculture sector.
 
 **OBJECTIVES:**
-- Deliver a secure, scalable core platform
-- Ensure compliance with aerospace & defense standards
-- Support future development and integration
+- Establish core system functionalities including user management and data storage
+- Deliver a secure, scalable, and operational platform
+- Lay groundwork for future expansion and integrations
 
 **NOW, THEREFORE**, in consideration of the mutual covenants and agreements set forth herein, the parties agree as follows:
 
@@ -48,11 +48,11 @@ This Software Development Agreement (the 'Agreement') is entered into between Ha
 
 ## 1. DEFINITIONS
 
-**1.1 "Deliverables"** means The specific products, documents, or services to be provided by the Provider as outlined in the Statement of Work.
+**1.1 "Deliverables"** means The specific outputs to be provided by the Provider as detailed in the Scope of Work, including documentation, systems, and deployment.
 
-**1.2 "Acceptance Criteria"** means The conditions under which the Client will accept the Deliverables, including review and approval processes.
+**1.2 "Acceptance Criteria"** means The conditions under which the Client will accept each deliverable, including approval, functionality, and documentation standards.
 
-**1.3 "Change Request"** means A formal proposal to modify the scope, schedule, or costs of the project, which must be approved by both parties prior to implementation.
+**1.3 "Change Request"** means A formal proposal to modify the scope, timeline, or costs of the Project, which must be approved by both Parties prior to implementation.
 
 ---
 
@@ -60,31 +60,32 @@ This Software Development Agreement (the 'Agreement') is entered into between Ha
 
 ### 2.1 Description
 
-Development of a foundational system including architecture design, core modules, testing, and deployment, aligned with the detailed SOW and project milestones.
+Development of a foundational digital platform for Hamza Boss, including core functionalities such as user registration, data schemas, dashboards, and security measures, aligned with the SOW and milestones.
 
 ### 2.2 Deliverables
 
 | ID | Deliverable | Description | Phase |
 |----|-------------|-------------|-------|
-| D-001 | System Design Document | Comprehensive design specifications including architecture, modules, and interfaces. | mvp |
-| D-002 | Developed Core Platform | Deployed core system with user management, data handling, and security features. | mvp |
-| D-003 | Test Reports and Documentation | Testing results, user manuals, and deployment guides. | mvp |
+| D-001 | System Design Documentation | Complete technical design and architecture documents | mvp |
+| D-002 | Developed System | Fully functional system with user management, data storage, and dashboard | mvp |
+| D-003 | Deployment and Documentation | Deployed system on cloud environment with user manuals and technical documentation | mvp |
 
 ### 2.3 In Scope
 
-- Design system architecture
-- Develop core modules
-- Conduct testing and validation
+- User registration and login
+- Basic data schemas
+- Operational dashboard
+- Security measures
 
 ### 2.4 Out of Scope
 
-- Hardware procurement
-- Long-term maintenance beyond initial deployment
+- Mobile application development
+- Third-party system integrations beyond initial scope
 
 ### 2.5 Assumptions
 
-- Client will provide timely feedback
-- All necessary infrastructure is available
+- Client will provide detailed requirements and feedback
+- Technology stack will be finalized during initial planning
 
 ---
 
@@ -98,19 +99,19 @@ Development of a foundational system including architecture design, core modules
 
 | ID | Milestone | Target | Deliverables |
 |----|-----------|--------|--------------|
-| M-001 | Design Approval | Week 3 from commencement | D-001 |
-| M-002 | Development Completion | Week 9 from commencement | D-002 |
-| M-003 | Testing & Deployment | Week 14 from commencement | D-003 |
+| M-001 | Design Approval | Week 2 from commencement | D-001 |
+| M-002 | Development Completion | Week 10 from commencement | D-002 |
+| M-003 | Deployment & Acceptance | Week 14 from commencement | D-003 |
 
 ### 3.4 Delays
 
-Delays caused by unforeseen circumstances or client delays will be communicated promptly. The schedule may be adjusted accordingly with mutual agreement.
+Delays caused by unforeseen circumstances or client delays will be communicated promptly. The Parties agree to collaborate in good faith to mitigate delays. Any delay exceeding two weeks shall be subject to a mutually agreed extension or adjustment.
 
 ---
 
 ## 4. PAYMENT TERMS
 
-**4.1 Total Contract Value:** USD 180,000.00
+**4.1 Total Contract Value:** USD 160,000.00
 
 **4.2 Payment Structure:** Milestone-based
 
@@ -118,63 +119,63 @@ Delays caused by unforeseen circumstances or client delays will be communicated 
 
 | Milestone | Percentage | Amount | Trigger |
 |-----------|------------|--------|---------|
-| Design Approval | 20% | USD 36,000.00 | Upon approval of design document |
-| Core Development Complete | 50% | USD 90,000.00 | Upon completion of core platform development |
-| Testing & Deployment | 30% | USD 54,000.00 | Upon successful deployment and acceptance |
+| Design Approval | 20% | USD 32,000.00 | Upon approval of design documents |
+| MVP Delivery | 50% | USD 80,000.00 | Upon delivery and acceptance of the developed system |
+| Final Deployment | 30% | USD 48,000.00 | Upon successful deployment and client acceptance |
 
 **4.4 Payment Terms:** Net 30 days from invoice date
 
-**4.5 Late Payment:** Interest at 1.5% per month on overdue amounts
+**4.5 Late Payment:** Late payments shall accrue interest at 1.5% per month or the maximum rate permitted by law, whichever is lower.
 
 ---
 
 ## 5. ACCEPTANCE PROCEDURE
 
-**5.1 Submission:** Deliverables shall be submitted in electronic format via agreed communication channels.
+**5.1 Submission:** Deliverables shall be submitted electronically to the Client for review.
 
-**5.2 Review Period:** 10 business days for review and feedback.
+**5.2 Review Period:** 10 business days from receipt
 
-**5.3 Acceptance Criteria:** Deliverables meet the specified acceptance criteria and are approved in writing.
+**5.3 Acceptance Criteria:** Deliverables shall be deemed accepted if the Client does not provide written rejection within the review period or if the Client provides written approval.
 
-**5.4 Rejection Procedure:** Rejections must be communicated with detailed reasons within review period. Rework shall be completed within agreed timeframe.
+**5.4 Rejection Procedure:** Rejections must specify deficiencies. The Provider shall correct deficiencies within a mutually agreed timeframe.
 
-**5.5 Deemed Acceptance:** If no response is provided within review period, deliverables shall be deemed accepted.
+**5.5 Deemed Acceptance:** If no rejection is received within the review period, the deliverable shall be deemed accepted.
 
 ---
 
 ## 6. CHANGE MANAGEMENT
 
-**6.1 Change Request Process:** All change requests must be documented in writing and approved by authorized representatives of both parties before implementation.
+**6.1 Change Request Process:** All change requests must be submitted in writing, detailing scope, impact, and cost. Changes are only effective upon written approval of both Parties.
 
-**6.2 Impact Assessment:** Provider shall assess impact on scope, schedule, and costs and communicate to Client for approval.
+**6.2 Impact Assessment:** The Provider shall assess the impact of any change on scope, timeline, and cost prior to approval.
 
-**6.3 Approval Process:** Changes are approved when signed by authorized representatives.
+**6.3 Approval Process:** Changes require written approval from authorized representatives of both Parties.
 
-**6.4 Pricing for Changes:** Additional work outside scope will be billed at agreed rates or as per change order.
+**6.4 Pricing for Changes:** Additional work outside the scope shall be billed at agreed rates or as per change order.
 
 ---
 
 ## 7. INTELLECTUAL PROPERTY
 
-**7.1 Ownership:** All intellectual property rights in the work product shall be owned by the Client upon full payment.
+**7.1 Ownership:** All IP rights in the work product shall be owned by the Client upon full payment.
 
-**7.2 Work Product:** Provider grants Client a perpetual, non-exclusive license to use the work product.
+**7.2 Work Product:** The Provider grants the Client a perpetual, non-exclusive license to use the deliverables.
 
-**7.3 Pre-existing IP:** Provider retains rights to pre-existing IP; license granted to Client for use in the project.
+**7.3 Pre-existing IP:** Pre-existing IP of either Party shall remain the sole property of that Party, and no transfer is implied.
 
-**7.4 Third-Party IP:** Any third-party components will be licensed appropriately, with rights granted to Client.
+**7.4 Third-Party IP:** Any third-party IP incorporated shall be licensed for use by the Client under applicable terms.
 
-**7.5 License Grants:** Provider grants Client licenses necessary for operational use.
+**7.5 License Grants:** Provider grants the Client a license to use any third-party components necessary for the Project.
 
 ---
 
 ## 8. CONFIDENTIALITY
 
-**8.1 Definition:** Any non-public, proprietary, or confidential information exchanged shall be considered Confidential Information.
+**8.1 Definition:** Confidential Information includes all non-public information exchanged between Parties related to the Project.
 
-**8.2 Obligations:** Parties shall not disclose Confidential Information to third parties and shall protect it with reasonable care.
+**8.2 Obligations:** Parties shall maintain confidentiality and not disclose Confidential Information to third parties without prior consent.
 
-**8.3 Exceptions:** ['Information already known publicly', 'Information independently developed', 'Information disclosed with prior consent']
+**8.3 Exceptions:** ['Information already known publicly', 'Information independently developed', 'Information disclosed with prior written consent']
 
 **8.4 Duration:** Confidentiality obligations shall survive for 3 years after termination.
 
@@ -183,60 +184,60 @@ Delays caused by unforeseen circumstances or client delays will be communicated 
 ## 9. WARRANTIES
 
 **9.1 Provider Warranties:**
-- Work will conform to the specifications and accepted standards
-- Provider has the right to enter into this agreement and grant licenses
+- The work will be performed in a professional and workmanlike manner.
+- Deliverables will conform to the specifications and acceptance criteria.
 
-**9.2 Warranty Period:** 12 months from acceptance
+**9.2 Warranty Period:** 12 months from acceptance of final deliverable.
 
-**9.3 Warranty Remedies:** Provider shall correct any defects or non-conformities at no additional cost.
+**9.3 Warranty Remedies:** If a breach occurs, the Provider shall correct the defect at no additional cost within a reasonable timeframe.
 
-**9.4 Disclaimer:** Except as expressly provided, no other warranties are made, including implied warranties of merchantability or fitness for a particular purpose.
+**9.4 Disclaimer:** Except as expressly provided, the Provider makes no other warranties, express or implied.
 
 ---
 
 ## 10. SUPPORT AND MAINTENANCE
 
-**10.1 Warranty Support:** Support for warranty issues shall be provided during the warranty period.
+**10.1 Warranty Support:** Support shall be provided during the warranty period for defect correction.
 
-**10.2 Post-Warranty Support:** Support options available upon mutual agreement, billed separately.
+**10.2 Post-Warranty Support:** Support and maintenance services may be procured under separate agreement.
 
-**10.3 Service Levels:** Support shall adhere to agreed SLAs, including response and resolution times.
+**10.3 Service Levels:** SLAs for response and resolution times shall be established in a separate support agreement.
 
-**10.4 Maintenance Options:** Maintenance packages can be negotiated post-deployment.
+**10.4 Maintenance Options:** Available upon request, at additional cost.
 
 ---
 
 ## 11. LIMITATION OF LIABILITY
 
-**11.1 Liability Cap:** Liability shall not exceed the total contract value of USD 180,000.
+**11.1 Liability Cap:** Liability of either Party shall not exceed the total contract value.
 
-**11.2 Exclusions:** ['Indirect, consequential, or punitive damages', 'Loss of profits or business interruption']
+**11.2 Exclusions:** ['Indirect, consequential, or punitive damages']
 
-**11.3 Consequential Damages:** Parties shall not be liable for consequential damages.
+**11.3 Consequential Damages:** Parties shall not be liable for consequential damages arising from this Agreement.
 
 ---
 
 ## 12. TERMINATION
 
-**12.1 Termination for Convenience:** Either party may terminate this agreement with 30 days prior written notice.
+**12.1 Termination for Convenience:** Either Party may terminate this Agreement upon 30 days' written notice.
 
-**12.2 Termination for Cause:** Either party may terminate immediately upon material breach if not cured within 15 days.
+**12.2 Termination for Cause:** Either Party may terminate immediately for material breach if not cured within 10 days.
 
-**12.3 Effects of Termination:** Upon termination, Provider shall deliver all work-in-progress and Client shall pay for all work performed up to termination date.
+**12.3 Effects of Termination:** Upon termination, the Provider shall deliver all work in progress, and the Client shall pay for all work performed up to termination.
 
-**12.4 Survival:** ['Confidentiality', 'Intellectual Property Rights', 'Dispute Resolution', 'Payment obligations']
+**12.4 Survival:** Obligations of confidentiality, IP rights, and dispute resolution shall survive termination.
 
 ---
 
 ## 13. DISPUTE RESOLUTION
 
-**13.1 Governing Law:** This Agreement shall be governed by the laws of the jurisdiction where the Provider is located.
+**13.1 Governing Law:** This Agreement shall be governed by the laws of [Jurisdiction].
 
-**13.2 Negotiation:** Parties shall attempt to resolve disputes amicably through good-faith negotiations for 30 days.
+**13.2 Negotiation:** Parties shall attempt to resolve disputes amicably within 15 days.
 
-**13.3 Mediation:** If unresolved, disputes shall be submitted to mediation in the agreed jurisdiction.
+**13.3 Mediation:** If unresolved, disputes shall be submitted to mediation before arbitration or litigation.
 
-**13.4 Arbitration/Litigation:** If mediation fails, disputes shall be finally resolved by binding arbitration or litigation as mutually agreed.
+**13.4 Arbitration/Litigation:** Disputes not resolved by mediation shall be finally settled by binding arbitration in [Location], or by courts of competent jurisdiction.
 
 ---
 
@@ -244,7 +245,7 @@ Delays caused by unforeseen circumstances or client delays will be communicated 
 
 **14.1 Entire Agreement**
 
-This Agreement, including all schedules and appendices, constitutes the entire understanding between the parties.
+This Agreement constitutes the entire understanding between the Parties and supersedes all prior agreements.
 
 **14.2 Amendment**
 
@@ -252,15 +253,15 @@ Any amendments must be in writing and signed by authorized representatives.
 
 **14.3 Assignment**
 
-Neither party shall assign this Agreement without prior written consent.
+Neither Party may assign this Agreement without prior written consent.
 
 **14.4 Force Majeure**
 
-Neither party shall be liable for failure or delay due to causes beyond reasonable control.
+Neither Party shall be liable for delays or failure caused by events beyond their reasonable control.
 
 **14.5 Notices**
 
-Notices shall be delivered in writing via email or registered mail to the addresses specified.
+All notices shall be in writing and delivered via email or registered mail to the addresses specified.
 
 ---
 
@@ -268,15 +269,15 @@ Notices shall be delivered in writing via email or registered mail to the addres
 
 **Schedule A: Detailed Scope of Work**
 
-_See SOW document_
+_See Scope of Work section above_
 
 **Schedule B: Technical Specifications**
 
-_See Technical Architecture and Design Documents_
+_See Architecture & Technical Summary in project documentation_
 
 **Schedule C: Payment Schedule**
 
-_See Payment Terms section_
+_See Payment Terms section above_
 
 ---
 
