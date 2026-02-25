@@ -23,19 +23,22 @@
 
 ## Executive Summary
 
-This architecture establishes a scalable, secure, and maintainable digital foundation for Hamza Boss, focusing on user management, data storage, and operational dashboards. It leverages cloud-native technologies to ensure flexibility and future growth.
+This architecture provides a scalable, secure, and maintainable platform to manage client data, integrate with the existing website, and support user management with role-based access control. It leverages cloud infrastructure for flexibility and future growth.
 
 ### Key Decisions
-- Adopt a microservices architecture to enable scalability and modularity
-- Use cloud infrastructure (AWS) for hosting, scalability, and security
-- Implement RESTful APIs for internal and external integrations
+- Adopt a microservices architecture for modularity and scalability
+- Use cloud provider AWS for hosting, leveraging managed services
+- Implement security with OAuth2 and role-based access control
+- Use RESTful APIs for system integration and website communication
 
 ### Technology Highlights
-- React.js for frontend for rich, responsive UI
-- FastAPI (Python) for backend APIs due to rapid development and performance
-- PostgreSQL for relational data storage with Redis for caching
-- AWS cloud services (ECS/EKS, RDS, S3) for deployment and storage
-- OAuth2 with JWT for secure authentication
+- React for frontend UI
+- FastAPI (Python) for backend API services
+- PostgreSQL for relational data storage
+- Redis for caching
+- AWS cloud infrastructure with ECS/EKS for deployment
+- Terraform for infrastructure as code
+- GitHub Actions for CI/CD
 
 ## System Architecture
 
@@ -43,104 +46,112 @@ This architecture establishes a scalable, secure, and maintainable digital found
 
 ### Architecture Overview
 
-The system consists of a frontend web application communicating via REST APIs with a backend API gateway, which routes requests to dedicated microservices for user management, data management, and dashboard services. Data is stored in PostgreSQL, with Redis caching. All services are hosted on AWS ECS/EKS, with static assets on S3, and secure communication via HTTPS.
+The system consists of a frontend client communicating via REST APIs with backend microservices hosted on AWS ECS/EKS. Data is stored in PostgreSQL, with Redis caching. The website https://hamza.rider.app interfaces with backend APIs for data display and interactions. Authentication is managed via OAuth2, with role-based access control enforced at API endpoints.
 
 ### System Components
 
-#### Frontend Web Application
+#### Frontend UI
 
-**Purpose:** Provide user interface for login, data entry, and dashboards
+**Purpose:** Provide user interface for admin and client users
 
 **Responsibilities:**
-- Render UI
+- Render data
 - Handle user interactions
-- Communicate with backend APIs
+- Call backend APIs
 
-**Technologies:** React.js, Next.js for SSR and SEO
+**Technologies:** React, Axios
 
 #### API Gateway
 
-**Purpose:** Route requests to appropriate microservices
+**Purpose:** Route requests to appropriate microservices, handle authentication
 
 **Responsibilities:**
-- Authentication and authorization
 - Request routing
-- Rate limiting
+- Authentication verification
 
-**Technologies:** FastAPI, NGINX or AWS API Gateway
+**Technologies:** AWS API Gateway
 
-#### User Management Service
+#### Client Data Service
 
-**Purpose:** Handle registration, login, roles, permissions
-
-**Responsibilities:**
-- User authentication
-- Role-based access control
-
-**Technologies:** FastAPI, JWT for token management
-
-#### Data Management Service
-
-**Purpose:** Manage core data schemas and CRUD operations
+**Purpose:** Manage client information CRUD operations
 
 **Responsibilities:**
-- Data validation
-- Data storage and retrieval
+- Store, retrieve, update, delete client data
 
 **Technologies:** FastAPI, PostgreSQL
 
-#### Dashboard Service
+#### User Management Service
 
-**Purpose:** Aggregate data and serve real-time dashboards
+**Purpose:** Handle user accounts, roles, and permissions
 
 **Responsibilities:**
-- Data aggregation
-- Visualization support
+- User CRUD
+- Role assignment
+- Access control
 
-**Technologies:** FastAPI, WebSocket for real-time updates
+**Technologies:** FastAPI, PostgreSQL
+
+#### Website Integration Module
+
+**Purpose:** Connect backend with https://hamza.rider.app for data display
+
+**Responsibilities:**
+- Expose endpoints for website data fetch
+
+**Technologies:** REST API
+
+#### Authentication & Authorization
+
+**Purpose:** Secure system with OAuth2, enforce RBAC
+
+**Responsibilities:**
+- Token issuance
+- Access control enforcement
+
+**Technologies:** OAuth2, JWT
 
 ### Data Flow
 
-#### User Authentication
+#### Client Data CRUD
 
-User submits credentials via frontend → API Gateway validates via User Service → JWT token issued → Frontend stores token for session
+Admin user interacts via frontend; requests go through API Gateway to Client Data Service; data stored/retrieved from PostgreSQL; responses sent back to frontend.
 
-1. User enters credentials
-2. Frontend sends login request to API Gateway
-3. API Gateway forwards to User Service
-4. User Service authenticates and returns JWT
-5. Frontend stores JWT and accesses protected resources
+1. User submits form
+2. Request routed via API Gateway
+3. Service processes request
+4. Data stored/retrieved
+5. Response sent to frontend
 
-#### Data Entry and Retrieval
+#### Website Data Display
 
-Users submit data via frontend → Data Service validates and stores data → Dashboard fetches aggregated data for display
+Website makes API calls to backend to fetch client data for display.
 
-1. User submits data
-2. API Gateway routes to Data Service
-3. Data Service validates and stores in PostgreSQL
-4. Dashboard Service queries data for display
+1. Website triggers data fetch
+2. API Gateway routes to relevant service
+3. Service retrieves data from PostgreSQL
+4. Data returned to website
 
 ## Technology Stack
 
 ### Frontend
 
-**Framework:** React.js with Next.js
+**Framework:** React
 
-*Justification:* React.js provides a flexible, component-based architecture suitable for dynamic dashboards; Next.js enables server-side rendering for performance and SEO.
+*Justification:* React provides a flexible, component-based architecture suitable for responsive admin and user interfaces, with a large ecosystem and community support.
 
 **Libraries:**
 
 | Library | Purpose |
 |---------|---------|
-| Redux | State management |
-| Axios | API communication |
+| Axios | Handle HTTP requests |
+| React Router | Manage client-side routing |
 
 ### Backend
 
 **Framework:** FastAPI
 **Language:** Python
 
-*Justification:* FastAPI offers high performance, easy async support, and rapid development, ideal for microservices architecture.
+*Justification:* FastAPI offers high performance, easy development, and automatic documentation, suitable for RESTful microservices.
 
 **Libraries:**
 
@@ -152,28 +163,25 @@ Users submit data via frontend → Data Service validates and stores data → Da
 ### Database
 
 **Primary Database:** PostgreSQL
-*Justification:* Relational data with complex relationships, proven reliability, and scalability.
+*Justification:* Relational database with strong support for structured data, ACID compliance, and scalability.
 
 **Caching:** Redis
-*Justification:* Supports fast data caching, session management, and real-time updates.
-
-**Search:** Elasticsearch
-*Justification:* Optional, for advanced search capabilities if needed in future expansion.
+*Justification:* In-memory cache to improve performance for frequently accessed data.
 
 ### Infrastructure
 
 **Cloud Provider:** AWS
-**Hosting:** ECS/EKS for container orchestration
-**CDN:** CloudFront for static assets
+**Hosting:** ECS (Elastic Container Service) for container orchestration, with potential migration to EKS (Kubernetes) in future.
+**CDN:** CloudFront for static assets and website delivery
 **Storage:** S3 for static files and backups
 
 ### DevOps
 
 **CI/CD:** GitHub Actions
 **Containerization:** Docker
-**Orchestration:** Kubernetes (EKS)
+**Orchestration:** ECS (initial), EKS (future)
 
-**Monitoring:** CloudWatch, Datadog
+**Monitoring:** AWS CloudWatch, Datadog
 
 **Logging:** CloudWatch Logs
 
@@ -181,47 +189,47 @@ Users submit data via frontend → Data Service validates and stores data → Da
 
 | Service | Purpose | API Type |
 |---------|---------|----------|
-| Auth0 | External OAuth2 provider for authentication (optional) | OAuth2 |
+| OAuth2 Provider | Secure authentication and token management | OAuth2 |
 
 ## Security Architecture
 
 ### Authentication
 
-**Method:** OAuth2 with JWT tokens
-**Provider:** Custom implementation with JWT or optional external provider (Auth0)
+**Method:** OAuth2
+**Provider:** AWS Cognito or custom OAuth2 provider
 
 ### Authorization
 
 **Model:** RBAC
-**Implementation:** Role-based access enforced at API level
+**Implementation:** Enforced via API middleware, role checks at each endpoint
 
 ### Data Protection
-- Encryption at rest: AES-256 (PostgreSQL, S3)
+- Encryption at rest: PostgreSQL, S3
 - Encryption in transit: HTTPS/TLS
-- Data masking: As needed for sensitive data
+- Data masking: Sensitive fields masked in logs/UI
 
-**Compliance:** GDPR (if applicable)
+**Compliance:** GDPR, local data protection laws
 
 ### Security Measures
-- Secure password policies
 - Regular security audits
-- WAF and network security groups
+- Secure coding practices
+- Least privilege access
 
 ## Scalability & Reliability
 
-**Scaling Strategy:** Auto-scaling based on load for ECS/EKS services
+**Scaling Strategy:** Horizontal scaling with auto-scaling groups for ECS/EKS
 **Load Balancing:** AWS Application Load Balancer (ALB)
 
 ### High Availability
 
-**Approach:** Multi-AZ deployment for databases and services
-**Failover:** Automatic failover with RDS Multi-AZ
+**Approach:** Multi-AZ deployment for all services
+**Failover:** Automatic failover with Route 53 health checks
 
 ### Disaster Recovery
 
 **RPO:** 24 hours
-**RTO:** 2 hours
-**Backup Strategy:** Automated backups with periodic snapshots
+**RTO:** 4 hours
+**Backup Strategy:** Automated daily backups with S3 versioning
 
 ## Integration Architecture
 
@@ -235,25 +243,25 @@ Users submit data via frontend → Data Service validates and stores data → Da
 
 | System | Type | Data Exchanged |
 |--------|------|----------------|
-| Third-party data sources | API | Data feeds, authentication tokens |
+| Existing Website | API | Client data display, user interactions |
 
 ### Event Architecture
 
 **Pattern:** Request-response
-**Message Broker:** None in initial phase; Kafka/RabbitMQ for future event-driven needs
+**Message Broker:** None at this stage
 
 ## Development Approach
 
-**Methodology:** Agile Scrum
+**Methodology:** Agile
 **Sprint Duration:** 2 weeks
-**Branching Strategy:** Trunk-based development
+**Branching Strategy:** GitFlow
 
 **Environments:** development, staging, production
 
 ### Testing Strategy
 
 **Unit Testing:** Pytest
-**Integration Testing:** Automated tests
+**Integration Testing:** Test suites for API endpoints
 **E2E Testing:** Cypress
 **Coverage Target:** 80%
 
@@ -263,57 +271,49 @@ Users submit data via frontend → Data Service validates and stores data → Da
 
 ### Development Phases
 
-#### Foundation & Planning
-
-**Duration:** 3 weeks
-
-**Features:**
-- Requirements clarification
-- Architecture design
-- Environment setup
-
-**Deliverables:**
-- Architecture document
-- Initial environment setup
-
-#### Development & Core Features
+#### Phase 1: Foundation & Core Modules
 
 **Duration:** 6 weeks
 
 **Features:**
-- User management
-- Data schemas
-- Basic dashboard
+- Client Data Management
+- Website Integration
 
 **Deliverables:**
-- Core backend APIs
-- Frontend MVP
+- D-001
+- D-002
+
+#### Phase 2: User Management & Security
+
+**Duration:** 4 weeks
+
+**Features:**
+- User Management
+- RBAC Security
+
+**Deliverables:**
+- D-003
 
 #### Testing & Deployment
 
-**Duration:** 3 weeks
+**Duration:** 4 weeks
 
 **Features:**
-- User acceptance testing
-- Deployment automation
-- Documentation
+- Testing, Bug Fixes, Deployment
 
 **Deliverables:**
-- Deployed system
-- User manuals
+- Final system release
 
 ### Milestones
 
 | Milestone | Week | Criteria |
 |-----------|------|----------|
-| Design Approval | 2 | Design documents approved |
-| MVP Completion | 10 | Core features implemented and tested |
-| System Deployment | 14 | System live and accepted by client |
+| MVP Release | 8 | Core modules functional, Basic website integration verified |
 
 ### Timeline Risks
 
-- **Delays in requirement clarification** (+2 weeks)
-  - Mitigation: Early engagement and regular check-ins
+- **Delays in client feedback or infrastructure provisioning** (+2 weeks)
+  - Mitigation: Early engagement and parallel setup activities
 
 ## Pricing Estimate
 
@@ -326,9 +326,9 @@ Users submit data via frontend → Data Service validates and stores data → Da
 
 | Phase | Cost | Details |
 |-------|------|---------|
-| Foundation & Planning | $20,000.00 | Architecture, environment setup |
-| Development & Core Features | $100,000.00 | Backend, frontend, core APIs |
-| Testing & Deployment | $40,000.00 | Testing, deployment, documentation |
+| Phase 1 | $90,000.00 | Core modules development, integration, initial testing |
+| Phase 2 | $50,000.00 | User management, security, advanced testing |
+| Testing & Deployment | $20,000.00 | Final testing, bug fixing, deployment |
 
 ### Infrastructure Costs
 
@@ -337,16 +337,16 @@ Users submit data via frontend → Data Service validates and stores data → Da
 
 | Service | Monthly Cost |
 |---------|--------------|
-| AWS EC2/EKS | $300.00 |
-| RDS PostgreSQL | $150.00 |
-| S3 storage | $50.00 |
+| AWS EC2 | $250.00 |
+| RDS PostgreSQL | $200.00 |
+| S3 Storage | $50.00 |
 | CloudFront CDN | $100.00 |
 
 ### Third-Party Costs (Monthly)
 
 | Service | Tier | Monthly Cost |
 |---------|------|--------------|
-| Auth0 | Professional | $50.00 |
+| OAuth2 Provider (Cognito) | Standard | $50.00 |
 
 ### Payment Terms
 
@@ -354,14 +354,14 @@ Users submit data via frontend → Data Service validates and stores data → Da
 
 | Milestone | Percentage |
 |-----------|------------|
-| Design Approval | 20% |
-| MVP Delivery | 50% |
-| Final Deployment | 30% |
+| Project Kickoff | 30% |
+| Mid-Project Milestone | 40% |
+| Final Delivery | 30% |
 
 ### Exclusions
 
-- Mobile app development
-- Third-party system integrations beyond initial scope
+- Third-party custom integrations beyond website
+- Post-launch support
 
 ---
 
