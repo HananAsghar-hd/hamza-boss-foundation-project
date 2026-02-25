@@ -10,123 +10,120 @@
 ## 1. Introduction
 
 ### 1.1 Purpose
-This document provides a detailed technical specification for the development of the Hamza Boss - Foundation Project, guiding the implementation team to deliver a foundational digital platform aligned with client requirements.
+This document provides a detailed technical specification for the development of the Hamza Boss - Foundation Project, guiding the implementation team in understanding functional and non-functional requirements, interfaces, and constraints.
 
 ### 1.2 Scope
-The system will establish core functionalities including user management, data storage, basic dashboards, and security measures. It aims to support Hamza Boss's initial operational needs in the agriculture sector, with scope for future expansion.
+The system will facilitate core data management, website integration, user management, and security for Hamza Boss. It will support data storage, retrieval, and display, with role-based access control, integrated with the existing website https://hamza.rider.app.
 
 ### 1.3 Definitions, Acronyms, and Abbreviations
 
 | Term | Definition |
 |------|------------|
 | MVP | Minimum Viable Product, the initial release with core functionalities. |
-| Stakeholder | Any individual or entity with an interest in the project, including Hamza Rider and project team members. |
+| Role-Based Access Control | Security mechanism that restricts system access based on user roles. |
 
 ### 1.4 References
 
-- Project Requirements Analysis
-- Initial Contract Draft
-- Client Stakeholder Inputs
+- Project Requirements Analysis Document
+- Client Communication Records
 
 ### 1.5 Overview
-This SRS outlines the functional and non-functional requirements, system architecture considerations, external interfaces, and constraints necessary for the successful development of the foundational platform for Hamza Boss.
+This specification outlines the system's functional components, interfaces, security, performance, and scalability requirements to ensure a comprehensive understanding for the development team.
 
 ## 2. Overall Description
 
 ### 2.1 Product Perspective
-The system will serve as a standalone digital foundation that can integrate with future systems or third-party services as needed. It will be hosted on cloud infrastructure, ensuring scalability and security.
+The system will be a standalone data management and website integration platform, interfacing with existing client infrastructure and website for seamless data display and user interaction.
 
 ### 2.2 Product Functions
 
-- User registration and login
-- Role-based access control
-- Basic data management (client, operational, user data)
-- Dashboard for project tracking
-- Secure data storage and transmission
+- Store and manage client details
+- Integrate with existing website for user interactions
+- Manage user accounts with role-based permissions
+- Ensure system security and compliance
+- Support scalability for future growth
 
 ### 2.3 User Classes and Characteristics
 
 **Admin**
-- Description: System administrators managing user access and system configurations
+- Description: System administrators with full access to manage data and users.
 - Characteristics:
-  - Technical proficiency
+  - Technical knowledge
   - Access to all system features
 
-**Internal Staff**
-- Description: End-users managing operational data and utilizing dashboards
+**Client User**
+- Description: End-users accessing data via the website.
 - Characteristics:
-  - Basic technical skills
-  - Role-specific permissions
+  - Limited access
+  - Basic data viewing
 
 ### 2.4 Operating Environment
-The system will be hosted on cloud infrastructure supporting web access via modern browsers. It will utilize RESTful APIs for integration with potential third-party services.
+The system will be hosted on cloud infrastructure supporting web applications, compatible with modern browsers, and integrated with the client's existing website and infrastructure.
 
 ### 2.5 Design and Implementation Constraints
 
-- Technology stack to be determined but must support scalability and security
-- Compliance with data protection standards (e.g., GDPR if applicable)
+- Compliance with relevant data protection standards
+- Support for existing website integration
 
 ### 2.6 Assumptions and Dependencies
 
-- Client will provide detailed requirements and feedback during development
-- External systems or data sources will be integrated based on future scope
+- Client will provide timely access to systems and feedback
+- Existing infrastructure supports necessary integrations
 
 ## 3. System Features
 
-### 3.1 SF-001: User Management
+### 3.1 SF-001: Client Data Management
 
-**Description:** Manage user registration, login, and role assignment
+**Description:** Manage core client information including name, industry, website, revenue, employees, and ABN.
 **Priority:** high
 
 **Functional Requirements:**
 
-**FR-USER-001**: Implement user registration and login for internal users
-- *Inputs:* User credentials (username, password)
-- *Processing:* Validate credentials, create user session
-- *Outputs:* Authenticated user session
+**FR-CLIENT-001**: System shall store and allow CRUD operations on client details.
+- *Inputs:* Client details input form
+- *Processing:* Validate input, store in database, retrieve on request
+- *Outputs:* Stored client data, confirmation messages
 - *Acceptance Criteria:*
-  - Users can register with valid credentials
-  - Login authenticates against stored credentials
-  - Session management is secure
+  - Data is accurately stored and retrieved
+  - CRUD operations are functional without errors
 
-**FR-USER-002**: Define user roles and permissions
-- *Inputs:* Role definitions from admin
-- *Processing:* Assign roles to users, enforce role-based access
-- *Outputs:* Role-specific access control
+### 3.2 SF-002: User Management
+
+**Description:** Create, update, delete user accounts and implement role-based access control.
+**Priority:** medium
+
+**Functional Requirements:**
+
+**FR-USER-001**: System shall support user account creation, modification, and deletion.
+- *Inputs:* User registration/update forms
+- *Processing:* Validate input, update user database
+- *Outputs:* Confirmation of actions
 - *Acceptance Criteria:*
-  - Roles are assignable and enforce permissions
-  - Admin can modify roles and permissions
+  - All user operations succeed with proper validation
+  - User roles are correctly assigned
 
-### 3.2 SF-002: Data Management
+**FR-USER-002**: Implement role-based access control for different user types.
+- *Inputs:* User role assignments
+- *Processing:* Enforce permissions based on roles
+- *Outputs:* Access restrictions applied
+- *Acceptance Criteria:*
+  - Users can only access permitted features
+  - Role permissions are correctly enforced
 
-**Description:** Store and manage core data including client, operational, and user data
+### 3.3 SF-003: Website Integration
+
+**Description:** Integrate with https://hamza.rider.app for user interactions and data display.
 **Priority:** high
 
 **Functional Requirements:**
 
-**FR-DATA-001**: Implement a basic database schema for core data
-- *Inputs:* Data entries from users
-- *Processing:* Data validation and storage
-- *Outputs:* Persisted data records
+**FR-WEB-001**: System shall connect with the existing website to display data and facilitate user interactions.
+- *Inputs:* API calls or embedded widgets
+- *Processing:* Fetch data from backend, render on website
+- *Outputs:* Updated website UI with integrated data
 - *Acceptance Criteria:*
-  - Data is stored securely
-  - Data retrieval is efficient
-  - Data integrity is maintained
-
-### 3.3 SF-003: Dashboard & Project Tracking
-
-**Description:** Provide a basic dashboard for project status and data overview
-**Priority:** mvp
-
-**Functional Requirements:**
-
-**FR-PROJ-002**: Create a project overview dashboard for tracking progress
-- *Inputs:* Operational data and user inputs
-- *Processing:* Aggregate and display key metrics
-- *Outputs:* Visual dashboard with real-time data
-- *Acceptance Criteria:*
-  - Dashboard loads within 3 seconds under normal load
-  - Displays relevant project metrics accurately
+  - Data displays correctly on the website
+  - User interactions are functional and responsive
 
 ## 4. External Interface Requirements
 
@@ -136,11 +133,11 @@ The system will be hosted on cloud infrastructure supporting web access via mode
 
 ### 4.2 Hardware Interfaces
 
-- No specific hardware interfaces; cloud-hosted environment
+- Standard server infrastructure supporting web hosting
 
 ### 4.3 Software Interfaces
 
-- **RESTful API**: APIs for internal communication and potential third-party integrations
+- **Existing Website**: https://hamza.rider.app for data display and user interaction
 
 ### 4.4 Communications Interfaces
 
@@ -154,25 +151,23 @@ The system will be hosted on cloud infrastructure supporting web access via mode
 
 ### 5.2 Security
 
-- Data encryption at rest and in transit (AES-256)
-- Secure password policies and authentication mechanisms
+- Compliance with relevant data protection standards (e.g., GDPR, local laws)
 
 ### 5.3 Reliability
 
-- System uptime of 99.5% during operational hours
+- System uptime of 99.5%
 
 ### 5.4 Availability
 
-- System accessible 24/7 with minimal downtime
+- System available 24/7 with minimal downtime
 
 ### 5.5 Maintainability
 
-- Codebase structured for easy updates and bug fixes
-- Documentation for future developers
+- Code should follow best practices for easy updates and bug fixes
 
 ### 5.6 Portability
 
-- Compatible with major browsers and cloud hosting environments
+- System should support deployment on cloud infrastructure compatible with major providers
 
 ---
 
